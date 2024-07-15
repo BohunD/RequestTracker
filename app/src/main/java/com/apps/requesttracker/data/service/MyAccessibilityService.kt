@@ -41,7 +41,6 @@ class MyAccessibilityService : AccessibilityService() {
 
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
-        Log.d("HANDLE_EVENT", event?.source.toString())
 
         if (event == null) return
         val source = event.source ?: return
@@ -54,12 +53,8 @@ class MyAccessibilityService : AccessibilityService() {
 
         val viewId = source.viewIdResourceName
         viewId?.let {
-            if(!event?.source?.viewIdResourceName.toString().isNullOrEmpty())
-                Log.d("HANDLE_EVENT_LET", event?.source?.viewIdResourceName.toString())
 
             val capturedUrl = captureUrl(source, it)
-            if(capturedUrl!=null)
-                Log.d("HANDLE_EVENT_LETw", capturedUrl.toString())
 
             if (capturedUrl == null) {
                 traverseNodeTree(event.source!!)
@@ -73,7 +68,6 @@ class MyAccessibilityService : AccessibilityService() {
 
     @RequiresApi(Build.VERSION_CODES.P)
     private fun traverseNodeTree(node: AccessibilityNodeInfo) {
-        Log.d("HANDLE_HANDLE", "traverse: ${node.viewIdResourceName}")
         val stack = mutableListOf(node)
         while (stack.isNotEmpty()) {
             val currentNode = stack.removeAt(stack.size - 1)
@@ -93,9 +87,7 @@ class MyAccessibilityService : AccessibilityService() {
 
     private fun handleCapturedUrl(capturedUrl: String, packageName: String) {
         if (capturedUrl != lastCapturedUrl) {
-            Log.d("HANDLE_HANDLE", "capturedUrl: $capturedUrl,\nlastCapturedUrl: $lastCapturedUrl")
             if (isValidSearchQuery(capturedUrl)) {
-                Log.d("HANDLE_SAVE", capturedUrl)
 
                 saveQuery(capturedUrl)
                 lastCapturedUrl = capturedUrl
