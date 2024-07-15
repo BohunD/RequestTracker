@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowContentChanged|typeViewClicked|typeViewFocused"
+    android:accessibilityFeedbackType="feedbackAllMask"
+    android:accessibilityFlags="flagDefault|flagIncludeNotImportantViews|flagRequestTouchExplorationMode|flagRequestEnhancedWebAccessibility|flagReportViewIds|flagRetrieveInteractiveWindows"
+    android:notificationTimeout="100"
+    android:canRetrieveWindowContent="true"
+    android:settingsActivity="com.example.myapp.SettingsActivity"
+    android:packageNames="com.android.chrome,org.mozilla.firefox,com.brave.browser,com.microsoft.emmx,com.duckduckgo.mobile.android,com.opera.browser,com.sec.android.app.sbrowser,com.vivaldi.browser,com.android.browser,com.dolphin.browser.engine,com.ecosia.android,com.kiwibrowser.browser,com.opera.mini.native,com.cloudmosa.puffinFree,com.UCMobile.intl,org.mozilla.focus,org.torproject.torbrowser" />
+

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RequestTracker</string>
+    <string name="no_records_available">No records available</string>
+    <string name="make_queries_so_the_list_gets_updated_dynamically">Make queries so the list gets updated dynamically</string>
+</resources>
