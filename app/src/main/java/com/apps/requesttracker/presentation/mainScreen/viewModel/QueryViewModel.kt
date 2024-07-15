@@ -32,6 +32,10 @@ class QueryViewModel @Inject constructor(private val repository: QueryRepository
     fun checkAccessibilityService(context: Context, service: Class<*>) = viewModelScope.launch(Dispatchers.IO) {
         val am = context.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
         val enabledServices = Settings.Secure.getString(context.contentResolver, Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES)
+        if (enabledServices.isNullOrEmpty()) {
+            _isAccessibilityServiceEnabled.value = false
+            return@launch
+        }
         val colonSplitter = TextUtils.SimpleStringSplitter(':')
         colonSplitter.setString(enabledServices)
         var isEnabled = false
